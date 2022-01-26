@@ -14,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::resource('products', ProductController::class)->only([
     'index','show'
@@ -25,5 +28,5 @@ Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->
 
     Route::get('/', 'HomeController@index')->name('index');
 
-    Route::resources('products', ProductController::class);
+    Route::resource('products', ProductController::class);
 });
