@@ -13,7 +13,7 @@ class ProductSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-             for ($i=0; $i < 15; $i++) {
+        for ($i = 0; $i < 15; $i++) {
             $product = new Product();
             $product->name = $faker->sentence();
             $product->description = $faker->text();

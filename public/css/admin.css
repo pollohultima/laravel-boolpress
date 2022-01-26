@@ -11251,6 +11251,10 @@ body {
   font-size: 0.875rem;
 }
 
+#app {
+  margin-left: 320px;
+}
+
 .feather {
   width: 16px;
   height: 16px;

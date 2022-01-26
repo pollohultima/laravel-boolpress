@@ -15,16 +15,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('guest.welcome');
+})->name('home');
 
 Route::resource('products', ProductController::class)->only([
-    'index','show'
+    'index', 'show'
 ]);
 
 Auth::routes();
 
-Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function(){
+Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function () {
 
     Route::get('/', 'HomeController@index')->name('index');
 

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -14,10 +14,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+        return view('guest.products.index', compact('products'));
     }
 
- 
+
 
     /**
      * Display the specified resource.
@@ -27,6 +28,6 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('guest.products.show', compact('product'));
     }
 }
