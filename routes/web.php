@@ -15,9 +15,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::resource('products', ProductController::class)->only([
+    'index','show'
+]);
+
 Auth::routes();
 
 Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function(){
 
     Route::get('/', 'HomeController@index')->name('index');
+
+    Route::resources('products', ProductController::class);
 });
