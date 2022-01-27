@@ -8,6 +8,11 @@
                     <img class="card-img-top" src="{{ $post->cover }}" alt="">
                     <div class="card-body">
                         <h4 class="card-title">{{ $post->title }}</h4>
+                        <div class="metadata">
+                            <div class="category">
+                                Category: {{ $post->category != null ? $post->category->name : 'Uncategorized' }}
+                            </div>
+                        </div>
                         <p class="card-text">{{ $post->body }}</p>
                         <h6 class="card-text">{{ $post->slug }}</h6>
 

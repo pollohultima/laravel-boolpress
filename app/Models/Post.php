@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Post extends Model
 {
-    protected $fillable = ['title', 'slug', 'sub_title', 'cover', 'body'];
+    protected $fillable = ['title', 'slug', 'sub_title', 'cover', 'body', 'category_id'];
 
     public function category(): BelongsTo
     {

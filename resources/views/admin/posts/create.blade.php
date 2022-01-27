@@ -21,12 +21,23 @@
         </div>
 
         <div class="mb-3">
-            <label for="sub_title" class="form-label">sub_title</label>
+            <label for="sub_title" class="form-label">subtitle</label>
             <input type="text" name="sub_title" id="sub_title" class="form-control  @error('sub_title') is_invalid @enderror"
-                placeholder="subtitle" aria-describedby="helpId" value="{{ old('sub_title') }}"">
-                    </div>
+                placeholder="subtitle" aria-describedby="helpId" value="{{ old('sub_title') }}">
+        </div>
 
-                    <div class="   mb-3">
+        <div class="  mb-3">
+            <label for="category_id" class="form-label">Categories</label>
+            <select class="form-control @error('category_id') is_invalid @enderror" name="category_id" id="category_id">
+                <option value="" selected>Select a category</option>
+
+                @foreach ($categories as $category)
+                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                @endforeach
+            </select>
+        </div>
+
+        <div class="   mb-3">
             <label for="body" class="form-label">body</label>
             <input type="text" name="body" id="body" class="form-control  @error('body') is_invalid @enderror"
                 placeholder="body" aria-describedby="helpId" value="{{ old('body') }}">
