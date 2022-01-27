@@ -1,12 +1,12 @@
-a@extends('layouts.app')
+@extends('layouts.app')
 
 @section('content')
 
     <div class="container">
-        <div class="row g-3">
 
-            @foreach ($posts as $post)
-                <div class="col-3">
+        @foreach ($posts as $post)
+            <div class="row ">
+                <div class="col-12 mb-4">
                     <div class="card">
                         <img class="card-img-top" src="{{ $post->cover }}" alt="">
                         <div class="card-body">
@@ -19,9 +19,9 @@ a@extends('layouts.app')
                         </div>
                     </div>
                 </div>
-            @endforeach
+        @endforeach
 
-        </div>
+    </div>
     </div>
 
 @endsection

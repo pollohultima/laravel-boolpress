@@ -4,7 +4,9 @@
 @section('content')
 
     <h1>Products</h1>
-    <a name="" id="" class="btn btn-dark" href="{{ route('admin.products.create') }}" role="button">Create Product</a>
+    <a name="" id="" class="btn btn-primary text-white float-end" style="margin-right: 86px;"
+        href="{{ route('admin.products.create') }}" role="button">Create
+        Product</a>
     <table class="table">
         <thead>
             <tr>
@@ -25,9 +27,11 @@
                     <td>{{ $product->price }}</td>
                     <td>
                         <a href="{{ route('admin.products.show', $product->id) }}"><i
-                                class="fas fa-eye fa-lg fa-fw text-black"></i></a>
-                        <i class="fas fa-pencil-alt fa-lg fa-fw"></i>
-                        <i class="fas fa-trash fa-lg fa-fw"></i>
+                                class="fas fa-eye fa-lg fa-fw"></i></a>
+                        <a href=""><i class="fas fa-pencil-alt fa-lg fa-fw"></i></a>
+
+                        <a href=""><i class="fas fa-trash fa-lg fa-fw text-danger"></i></a>
+
                     </td>
                 </tr>
             @endforeach

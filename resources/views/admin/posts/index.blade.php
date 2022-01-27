@@ -3,15 +3,17 @@
 
 @section('content')
 
-    <h1>Products</h1>
-    <a name="" id="" class="btn btn-dark" href="{{ route('admin.posts.create') }}" role="button">Create post</a>
+    <h1>Posts</h1>
+    <a name="" id="" class="btn btn-primary text-white float-end" style="margin-right: 86px;"
+        href="{{ route('admin.posts.create') }}" role="button">Create
+        Post</a>
     <table class="table">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Cover</th>
-                <th>title</th>
-                <th>slug</th>
+                <th>Title</th>
+                <th>Body</th>
                 <th>Actions</th>
 
             </tr>
@@ -22,18 +24,16 @@
                     <td scope="row">{{ $post->id }}</td>
                     <td><img width="100" src="{{ $post->cover }}" alt=""></td>
                     <td>{{ $post->title }}</td>
-                    <td>{{ $post->body }}</td>
+                    <td class="text-truncate" style="max-width: 300px;">{{ $post->body }}</td>
                     <td>
-                        <a href="{{ route('admin.posts.show', $post->id) }}"><i
-                                class="fas fa-eye fa-lg fa-fw text-black"></i></a>
+                        <a href="{{ route('admin.posts.show', $post->id) }}"><i class="fas fa-eye fa-lg fa-fw "></i></a>
                         <a href="{{ route('admin.posts.edit', $post->id) }}"> <i
                                 class="fas fa-pencil-alt fa-lg fa-fw"></i></a>
 
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-danger" data-bs-toggle="modal"
-                            data-bs-target="#delete{{ $post->id }}">
-                            Delete
-                        </button>
+                        <a data-bs-toggle="modal" data-bs-target="#delete{{ $post->id }}">
+                            <i class="fas fa-trash fa-lg fa-fw text-danger"></i>
+                        </a>
 
                         <!-- Modal -->
                         <div class="modal fade" id="delete{{ $post->id }}" tabindex="-1" role="dialog"
