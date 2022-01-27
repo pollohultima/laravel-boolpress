@@ -21,6 +21,9 @@ Route::get('/', function () {
 Route::resource('products', ProductController::class)->only([
     'index', 'show'
 ]);
+Route::resource('posts', PostController::class)->only([
+    'index', 'show'
+]);
 
 Auth::routes();
 
@@ -29,4 +32,29 @@ Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->
     Route::get('/', 'HomeController@index')->name('index');
 
     Route::resource('products', ProductController::class);
+    Route::resource('posts', PostController::class);
 });
+
+/*
+
+Routes : sever routes (posts/learn-laravel)
+
+Model: Post
+
+
+Migrazione: posts
+
+-title (Learn Laravel)
+-slug (learn-laravel)
+-sub_title
+-body
+
+Seeder
+
+Controllers: admin/guest
+
+Table: categories
+-id
+-name
+-slug
+*/
