@@ -4,7 +4,7 @@
 
     <div class="p-5 bg-light">
         <div class="container">
-            <h1 class="display-3">Category: {{ $category->name }}</h1>
+            <h1 class="display-3">Tag: {{ $tag->name }}</h1>
         </div>
     </div>
 

@@ -27,6 +27,10 @@ Route::resource('posts', PostController::class)->only([
 
 Route::get('categories/{category:slug}/posts', 'CategoryController@posts')->name('categories.posts');
 
+
+Route::get('tags/{tag:slug}/posts', 'TagController@posts')->name('tags.posts');
+
+
 //categories/{category}/posts -> categorycontroller
 
 Auth::routes();
@@ -38,6 +42,7 @@ Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->
     Route::resource('products', ProductController::class);
     Route::resource('posts', PostController::class);
     Route::resource('categories', CategoryController::class);
+    Route::resource('tags', TagController::class);
 });
 
 /*

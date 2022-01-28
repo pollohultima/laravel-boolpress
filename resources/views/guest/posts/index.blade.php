@@ -7,27 +7,29 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-9">
-                <div class="container-fluid">
-                    <div class="row ">
-                        @foreach ($posts as $post)
-
-                            <div class="col-12 mb-4">
-                                <div class="card">
-                                    <img class="card-img-top" src="{{ $post->cover }}" alt="">
-                                    <div class="card-body">
-                                        <h4 class="card-title">{{ $post->title }}</h4>
-                                        <p class="card-text">{{ $post->body }}</p>
 
 
-                                        <a name="shop" class="btn btn-primary text-white"
-                                            href="{{ route('posts.show', $post->id) }}" role="button">Show</a>
-                                    </div>
-                                </div>
+                @foreach ($posts as $post)
 
-                        @endforeach
+                    <div class="mb-4">
+                        <div class="card">
+                            <img class="card-img-top" src="{{ $post->cover }}" alt="">
+                            <div class="card-body">
+                                <h4 class="card-title">{{ $post->title }}</h4>
+                                <p class="card-text">{{ $post->body }}</p>
+
+
+                                <a name="shop" class="btn btn-primary text-white"
+                                    href="{{ route('posts.show', $post->id) }}" role="button">Show</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
+
+                @endforeach
+
             </div>
+
+
 
             <div class="col-md-2">
                 <div class="card">
@@ -44,8 +46,23 @@
                         </ul>
                     </div>
                 </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h3>
+                            Tags
+                        </h3>
+                        <ul>
+                            @foreach ($tags as $tag)
+                                <li>
+                                    <a href="{{ route('tags.posts', $tag->slug) }}">{{ $tag->name }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
 
 @endsection

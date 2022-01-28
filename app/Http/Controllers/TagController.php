@@ -2,13 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use Illuminate\Http\Request;
-use App\Models\Post;
 use App\Models\Tag;
+use Illuminate\Http\Request;
 
-class PostController extends Controller
+class TagController extends Controller
 {
+
+    public function posts(Tag $tag)
+    {
+        $posts = $tag->posts()->orderByDesc('id')->paginate(10);
+        return view('guest.tags.posts', compact('posts', 'tag'));
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -16,10 +21,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderbyDesc('id')->paginate(12);
-        $categories = Category::all();
-        $tags = Tag::all();
-        return view('guest.posts.index', compact('posts', 'categories', 'tags'));
+        //
     }
 
     /**
@@ -46,21 +48,21 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show(Tag $tag)
     {
-        return view('guest.posts.show', compact('post'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Tag $tag)
     {
         //
     }
@@ -69,10 +71,10 @@ class PostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Tag $tag)
     {
         //
     }
@@ -80,10 +82,10 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Tag $tag)
     {
         //
     }
