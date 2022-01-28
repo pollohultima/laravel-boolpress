@@ -1,14 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
+
 
 class CategoryController extends Controller
 {
+
+    public function posts(Category $category)
+    {
+        $posts = $category->posts()->orderByDesc('id')->paginate(10);
+
+        return view('guest.categories.posts', compact('posts', 'category'));
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +24,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        return view('admin.categories.index', compact('categories'));
+        //
     }
 
     /**
@@ -38,15 +45,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $validated_date = $request->validate([
-            'name' => 'required|unique:categories'
-        ]);
-        $validated_date['slug'] = Str::slug($request->name);
-
-        Category::create($validated_date);
-
-
-        return redirect()->back()->with('message', 'Category created');
+        //
     }
 
     /**
@@ -91,7 +90,6 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        $category->delete();
-        return redirect()->back()->with('message', 'Category deleted');
+        //
     }
 }

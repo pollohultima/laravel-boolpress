@@ -25,6 +25,10 @@ Route::resource('posts', PostController::class)->only([
     'index', 'show'
 ]);
 
+Route::get('categories/{category:slug}/posts', 'CategoryController@posts')->name('categories.posts');
+
+//categories/{category}/posts -> categorycontroller
+
 Auth::routes();
 
 Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function () {
@@ -33,6 +37,7 @@ Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->
 
     Route::resource('products', ProductController::class);
     Route::resource('posts', PostController::class);
+    Route::resource('categories', CategoryController::class);
 });
 
 /*

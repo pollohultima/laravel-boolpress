@@ -10,7 +10,16 @@
                         <h4 class="card-title">{{ $post->title }}</h4>
                         <div class="metadata">
                             <div class="category">
-                                Category: {{ $post->category != null ? $post->category->name : 'Uncategorized' }}
+
+                                @if ($post->category)
+                                    Category: <a href="{{ route('categories.post', $post->category->slug) }}">
+                                        {{ $post->category->name }}</a>
+
+
+                                @else
+                                    <span>Uncategorized</span>
+
+                                @endif
                             </div>
                         </div>
                         <p class="card-text">{{ $post->body }}</p>
