@@ -15,7 +15,7 @@
                             aria-describedby="nameHelper">
                         <small id="nameHelper" class="text-muted">Type a Category name</small>
                     </div>
-                    <button type="submit" class="btn btn-primary">Add Category</button>
+                    <button type="submit" class="btn btn-primary text-white">Add Category</button>
                 </form>
                 @csrf
 
@@ -26,15 +26,16 @@
                 <ul class="list-group">
                     @foreach ($categories as $category)
                         <li class="list-group-item ">{{ $category->name }}</li>
-                        <form action="{{ route('admin.categories.update', $category->id) }}" method="post">
+                        {{-- <form action="{{ route('admin.categories.update', $category->id) }}" method="post">
                             @csrf
                             @method('PATCH')
                             <input type="text" name="name" id="name" value="{{ $category->name }}">
-                        </form>
+                        </form> --}}
 
-                        <span class="badge rounded-pill bg-primary">{{ $category->posts()->count() }}</span>
+                        <span class="badge  bg-primary">{{ $category->posts()->count() }}</span>
 
-                        <form action="{{ route('admin.categories.destroy', $category->id) }}" method="post">
+                        <form class="text-center" action="{{ route('admin.categories.destroy', $category->id) }}"
+                            method="post">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn text-danger">
