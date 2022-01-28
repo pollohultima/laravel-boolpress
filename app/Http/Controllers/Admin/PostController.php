@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
@@ -19,7 +20,10 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderbyDesc('id')->paginate(10);
+        //$posts = Post::orderbyDesc('id')->paginate(10);
+
+        $posts = Auth::user()->posts()->orderbyDesc('id')->paginate(10);
+
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -52,6 +56,8 @@ class PostController extends Controller
 
         $validated['slug'] = Str::slug($validated['title']);
 
+        $validated['user_id'] = Auth::id();
+
         Post::create($validated);
 
         return redirect()->route('admin.posts.index');
@@ -77,7 +83,11 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $categories = Category::all();
-        return view('admin.posts.edit', compact('post', 'categories'));
+        if (Auth::id() === $post->user_id) {
+            return view('admin.posts.edit', compact('post', 'categories'));
+        } else {
+            abort(403);
+        }
     }
 
     /**
@@ -89,18 +99,23 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        $validated = $request->validate([
-            'title' => ['required', Rule::unique('posts')->ignore($post->id), 'max:200'],
-            'sub_title' => ['nullable'],
-            'cover' => ['nullable'],
-            'body' => ['nullable'],
-            'category_id' => ['nullable', 'exists:categories,id']
-        ]);
+        if (Auth::id() === $post->user_id) {
+            $validated = $request->validate([
+                'title' => ['required', Rule::unique('posts')->ignore($post->id), 'max:200'],
+                'sub_title' => ['nullable'],
+                'cover' => ['nullable'],
+                'body' => ['nullable'],
+                'category_id' => ['nullable', 'exists:categories,id']
+            ]);
 
-        $post->update($validated);
+            $post->update($validated);
 
-        return redirect()->route('admin.posts.index');
+            return redirect()->route('admin.posts.index');
+        } else {
+            abort(403);
+        }
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -110,7 +125,11 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        $post->delete();
-        return redirect()->route('admin.posts.index');
+        if (Auth::id() === $post->user_id) {
+            $post->delete();
+            return redirect()->route('admin.posts.index');
+        } else {
+            abort(403);
+        }
     }
 }
