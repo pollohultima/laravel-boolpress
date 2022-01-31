@@ -65,6 +65,7 @@
             @endforeach
         </tslug>
     </table>
+    {{ $posts->links() }}
 
 
 
