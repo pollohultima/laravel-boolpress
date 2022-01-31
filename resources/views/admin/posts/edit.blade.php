@@ -2,11 +2,22 @@
 
 @section('content')
 
-    <h1>Update a post</h1>
 
-    <form action="{{ route('admin.posts.update', $post->id) }}" method="post">
+    <form action="{{ route('admin.posts.update', $post->id) }}" method="post" enctype="multipart/form-data">
         @csrf
         @method('PUT')
+        <h1>Update a post</h1>
+
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
@@ -15,15 +26,24 @@
         </div>
 
         <div class="mb-3">
-            <label for="cover" class="form-label">cover</label>
-            <input type="text" name="cover" id="cover" class="form-control  @error('cover') is_invalid @enderror"
-                placeholder="cover" aria-describedby="helpId" value="{{ $post->cover }}">
+
+            <div class="row">
+                <div class="col"><img src="{{ asset('storage/' . $post->cover) }}" alt="" class="img-fluid">
+                </div>
+                <div class="col"> <label for="cover" class="form-label">Change cover image</label>
+                    <input type="file" name="cover" id="cover" class="form-control  @error('cover') is_invalid @enderror"
+                        placeholder="cover" aria-describedby="helpId">
+                </div>
+
+            </div>
+
         </div>
 
         <div class="mb-3">
-            <label for="sub_title" class="form-label">sub_title</label>
-            <input type="text" name="sub_title" id="sub_title" class="form-control  @error('sub_title') is_invalid @enderror"
-                placeholder="sub_title" aria-describedby="helpId" value="{{ $post->sub_title }}">
+            <label for="sub_title" class="form-label">Subtitle</label>
+            <input type="text" name="sub_title" id="sub_title"
+                class="form-control  @error('sub_title') is_invalid @enderror" placeholder="Type your subtitle"
+                aria-describedby="helpId" value="{{ $post->sub_title }}">
         </div>
 
 

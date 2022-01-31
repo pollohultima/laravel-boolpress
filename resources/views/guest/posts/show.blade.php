@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col">
                 <div class="card">
-                    <img class="card-img-top" src="{{ $post->cover }}" alt="">
+                    <img class="card-img-top" src="{{ asset('storage/' . $post->cover) }}" alt="">
                     <div class="card-body">
 
                         <div class="metadata">

@@ -4,7 +4,7 @@
 @section('content')
 
     <h1>Posts</h1>
-    <a name="" id="" class="btn btn-primary text-white float-end" style="margin-right: 86px;"
+    <a name="" id="" class="btn btn-primary text-white float-end" style="margin-right: 150px;"
         href="{{ route('admin.posts.create') }}" role="button">Create
         Post</a>
     <table class="table">
@@ -15,17 +15,16 @@
                 <th>Title</th>
                 <th>Body</th>
                 <th>Actions</th>
-
             </tr>
         </thead>
         <tslug>
             @foreach ($posts as $post)
                 <tr>
                     <td scope="row">{{ $post->id }}</td>
-                    <td><img width="100" src="{{ $post->cover }}" alt=""></td>
-                    <td>{{ $post->title }}</td>
+                    <td><img width="100" src="{{ asset('storage/' . $post->cover) }}" alt=""></td>
+                    <td class="col-3">{{ $post->title }}</td>
                     <td class="text-truncate" style="max-width: 300px;">{{ $post->body }}</td>
-                    <td>
+                    <td class="col-2">
                         <a href="{{ route('admin.posts.show', $post->id) }}"><i class="fas fa-eye fa-lg fa-fw "></i></a>
                         <a href="{{ route('admin.posts.edit', $post->id) }}"> <i
                                 class="fas fa-pencil-alt fa-lg fa-fw"></i></a>

@@ -39,7 +39,6 @@
                                     <i class="fas fa-trash fa-lg fa-fw"></i>
                                 </button>
                             </form>
-
                         </li>
                     @endforeach
                     {{-- <form action="{{ route('admin.tags.update', $tag->id) }}" method="post">

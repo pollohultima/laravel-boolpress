@@ -14,7 +14,7 @@ class TagSeeder extends Seeder
      */
     public function run(Faker $faker)
     {
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 5; $i++) {
             $newTag = new Tag();
             $newTag->name = $faker->word();
             $newTag->slug = Str::slug($newTag->name);

@@ -9,7 +9,9 @@ use App\Models\Tag;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
+
 
 
 class PostController extends Controller
@@ -57,11 +59,18 @@ class PostController extends Controller
         $validated = $request->validate([
             'title' => ['required', 'unique:posts', 'max:200'],
             'sub_title' => ['nullable'],
-            'cover' => ['nullable'],
+            'cover' => ['nullable', 'image', 'max:500'],
             'body' => ['nullable'],
             'category_id' => ['nullable', 'exists:categories,id'],
 
         ]);
+
+        if ($request->file('cover')) {
+
+            $cover_path = $request->file('cover')->store('post_image');
+
+            $validated['cover'] = $cover_path;
+        }
 
 
         $validated['slug'] = Str::slug($validated['title']);
@@ -124,11 +133,22 @@ class PostController extends Controller
             $validated = $request->validate([
                 'title' => ['required', Rule::unique('posts')->ignore($post->id), 'max:200'],
                 'sub_title' => ['nullable'],
-                'cover' => ['nullable'],
+                'cover' => ['nullable', 'image', 'max:500'],
                 'body' => ['nullable'],
                 'category_id' => ['nullable', 'exists:categories,id'],
                 'tags' => ['nullable', 'exists:tags,id']
             ]);
+
+
+            //Verifica se seiste la chiave per cover
+            if ($request->file('cover')) {
+
+                Storage::delete($post->cover);
+
+                $cover_path = $request->file('cover')->store('post_image');
+
+                $validated['cover'] = $cover_path;
+            }
 
             if ($request->has('tags')) {
                 $request->validate([
