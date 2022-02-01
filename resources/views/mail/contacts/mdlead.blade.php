@@ -1,7 +1,14 @@
 @component('mail::message')
 # Introduction
 
-{{ $contact->message }}
+{{ $contact['message'] }}
+
+@component('mail::panel')
+Name: {{ $contact['name'] }}
+
+Email: {{ $contact['email'] }}
+
+@endcomponent
 
 @component('mail::button', ['url' => $url])
 Button

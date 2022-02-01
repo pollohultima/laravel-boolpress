@@ -20,6 +20,8 @@ Route::get('contacts', 'ContactController@show_contact_page')->name('contacts');
 
 Route::post('contacts', 'ContactController@store')->name('contacts.send');
 
+Route::post('contacts', 'Admin\ContactController@reply')->name('contacts.reply');
+
 Route::resource('products', ProductController::class)->only([
     'index', 'show'
 ]);
@@ -45,7 +47,7 @@ Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->
     Route::resource('posts', PostController::class);
     Route::resource('categories', CategoryController::class);
     Route::resource('tags', TagController::class);
-    Route::resource('contacts', ContactController::class)->only(['index', 'show', 'destroy']);
+    Route::resource('contacts', ContactController::class);
 });
 
 /*

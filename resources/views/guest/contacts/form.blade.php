@@ -34,7 +34,8 @@
             @csrf
             <div class="row">
 
-                <div class="col"><label for="name" class="form-label">Name</label>
+                <div class="col">
+                    <label for="name" class="form-label">Name</label>
                     <input type="text" name="name" id="name" class="form-control" placeholder="Mario Rossi"
                         aria-describedby="helpId" value="{{ old('name') }}">
                     <small id="helpId" class="text-muted">Type your name here</small>

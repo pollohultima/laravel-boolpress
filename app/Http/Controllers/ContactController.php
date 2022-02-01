@@ -37,7 +37,7 @@ class ContactController extends Controller
         /* Usando il markdown */
         //return (new MarkdownContactFormMail($valData))->render();
 
-        return redirect()->back()->with('message', 'Thx for the message buddy, fukoff');
+        return redirect()->back()->with('message', 'Thx for the message buddy');
     }
 
     public function sendEmail(Contact $contact)
