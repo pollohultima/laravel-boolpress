@@ -20,11 +20,9 @@
                         Categories
                     </h3>
                     <ul>
-                        @foreach ($categories as $category)
-                            <li>
-                                <a href="{{ route('categories.posts', $category->slug) }}">{{ $category->name }}</a>
-                            </li>
-                        @endforeach
+                        <li v-for="category in categories">
+                            <a href="">@{{ category.name }}</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -34,12 +32,7 @@
                         Tags
                     </h3>
                     <ul>
-                        @foreach ($tags as $tag)
-                            <li>
-                                <a href="{{ route('tags.posts', $tag->slug) }}">{{ $tag->name }}</a>
-                            </li>
-                        @endforeach
-                    </ul>
+
                 </div>
             </div>
         </div>

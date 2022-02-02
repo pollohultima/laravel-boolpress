@@ -34,22 +34,22 @@
             @csrf
             <div class="row">
 
-                <div class="col">
+                <div class="col-6">
                     <label for="name" class="form-label">Name</label>
                     <input type="text" name="name" id="name" class="form-control" placeholder="Mario Rossi"
                         aria-describedby="helpId" value="{{ old('name') }}">
                     <small id="helpId" class="text-muted">Type your name here</small>
                 </div>
 
-                <div class="col">
+                <div class="col-6">
                     <label for="email" class="form-label">Email</label>
                     <input type="email" name="email" id="email" class="form-control" placeholder="Type your email"
                         aria-describedby="helpId" value="{{ old('email') }}">
                     <small id="helpId" class="text-muted">Type you email adress here</small>
                 </div>
-                <div class="mb-3">
+                <div class="mb-3 col-12">
                     <label for="message" class="form-label">Message</label>
-                    <textarea class="form-control" name="message" id="message" rows="3"
+                    <textarea class="form-control" name="message" id="message" rows="5"
                         value="{{ old('message') }}"></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary w-100 text-white">Send</button>
