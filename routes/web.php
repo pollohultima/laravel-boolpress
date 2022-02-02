@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Resources\PostResource;
+use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -28,6 +30,10 @@ Route::resource('products', ProductController::class)->only([
 Route::resource('posts', PostController::class)->only([
     'index', 'show'
 ]);
+
+Route::get('posts/{post}', function (Post $post) {
+    return new PostResource(Post::find($post));
+});
 
 Route::get('categories/{category:slug}/posts', 'CategoryController@posts')->name('categories.posts');
 
