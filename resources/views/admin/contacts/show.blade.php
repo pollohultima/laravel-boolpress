@@ -14,7 +14,7 @@
     <hr>
 
     <h2>Reply</h2>
-    <form action="{{ route('') }}" method="post">
+    <form action="" method="post">
         @csrf
         <div class="mb-3">
             <label for="message" class="form-label">Message</label>

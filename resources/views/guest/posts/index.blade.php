@@ -8,12 +8,11 @@
         <div class="row">
             <div class="col-md-9">
 
-
                 @foreach ($posts as $post)
 
                     <div class="mb-4">
                         <div class="card">
-                            <img class="card-img-top w-25" src="{{ asset('storage/' . $post->cover) }}" alt="">
+                            <img class="card-img-top w-25" src="{{ $post->cover }}" alt="">
                             <div class="card-body">
                                 <h4 class="card-title">{{ $post->title }}</h4>
                                 <p class="card-text text-truncate">{{ $post->body }}</p>
@@ -28,8 +27,6 @@
                 @endforeach
 
             </div>
-
-
 
             <div class="col-md-3">
                 <div class="card">
@@ -62,6 +59,7 @@
                 </div>
             </div>
         </div>
+        {{ $posts->links() }}
     </div>
 
 

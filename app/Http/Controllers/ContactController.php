@@ -25,14 +25,12 @@ class ContactController extends Controller
 
         //ddd($valData); //Array
 
-
         //Mail::to('admin@example.com')->send(new ContactFormMail($valData));
 
         //creare la risorsa
         $contact = Contact::create($valData);
 
         $this->sendEmail($contact);
-
 
         /* Usando il markdown */
         //return (new MarkdownContactFormMail($valData))->render();
