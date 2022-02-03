@@ -43,6 +43,9 @@ const Home = Vue.component('Home', require('./pages/Home.vue').default);
 const About = Vue.component('About', require('./pages/About.vue').default);
 const Contacts = Vue.component('Contacts', require('./pages/Contacts.vue').default);
 const Posts = Vue.component('Posts', require('./pages/Posts.vue').default);
+const Post = Vue.component('Post', require('./pages/Post.vue').default);
+
+
 
 
 Vue.component('App', require('./App.vue').default);
@@ -69,6 +72,11 @@ const routes = [
         path:'/posts',
         name: 'posts',
         component: Posts
+    },
+        {
+        path:'/posts/:id',
+        name: 'post',
+        component: Post
     }
 ]
 
@@ -82,5 +90,4 @@ const router = new VueRouter({
 const app = new Vue({
     el: '#app',
     router,  //   <- immetto l'istanza router
-
 });

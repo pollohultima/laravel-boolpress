@@ -22,4 +22,10 @@ class PostController extends Controller
         # Con la risorsa e le relazioni
         return PostResource::collection(Post::with(['category', 'tags'])->paginate(8));
     }
+
+    public function show(Post $post)
+    {
+
+        return new PostResource(Post::find($post->id));
+    }
 }
