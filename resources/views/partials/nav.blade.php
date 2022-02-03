@@ -20,6 +20,9 @@
                 <li class="nav-item">
                     <router-link to="/contacts" class="nav-link">Contacts</router-link>
                 </li>
+                <li class="nav-item">
+                    <router-link to="/posts" class="nav-link">Posts</router-link>
+                </li>
             </ul>
 
             <!-- Right Side Of Navbar -->
@@ -49,7 +52,7 @@
                             </a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
-                                                                                                            document.getElementById('logout-form').submit();">
+                                                                                                                document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
 

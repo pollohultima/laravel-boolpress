@@ -42,7 +42,8 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const Home = Vue.component('Home', require('./pages/Home.vue').default);
 const About = Vue.component('About', require('./pages/About.vue').default);
 const Contacts = Vue.component('Contacts', require('./pages/Contacts.vue').default);
-const Games = Vue.component('Games', require('./pages/Games.vue').default);
+const Posts = Vue.component('Posts', require('./pages/Posts.vue').default);
+
 
 Vue.component('App', require('./App.vue').default);
 
@@ -64,10 +65,10 @@ const routes = [
         name: 'contacts',
         component: Contacts
     },
-      {
-        path:'/contacts',
-        name: 'contacts',
-        component: Contacts
+    {
+        path:'/posts',
+        name: 'posts',
+        component: Posts
     }
 ]
 
@@ -81,15 +82,5 @@ const router = new VueRouter({
 const app = new Vue({
     el: '#app',
     router,  //   <- immetto l'istanza router
-    data: {
-        posts:null
-    },
-    mounted(){
-        Axios.get('/api/posts').then(resp => {
-            console.log(resp);
-            this.posts = resp.data.data;
-        }).catch(e => {
-            console.error('Sorry! ' + e);
-        })
-    }
+
 });
