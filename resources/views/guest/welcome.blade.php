@@ -1,11 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.spa')
 
-@section('content')
+@section('app')
 
-    <div class="container">
-
-        <h1>Welcome to Boolpress</h1>
-
-    </div>
+    <App></App>
 
 @endsection

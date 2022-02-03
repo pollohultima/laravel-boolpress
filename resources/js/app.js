@@ -39,6 +39,8 @@ const Home = Vue.component('Home',require('./pages/Home.vue').default);
 const About = Vue.component('About',require('./pages/About.vue').default);
 const Contacts = Vue.component('Contacts',require('./pages/Contacts.vue').default);
 
+Vue.component('App', require('./App.vue').default);
+
 //Definisco le rotte nominate e uso i relativi componenti
 const routes = [
     {
