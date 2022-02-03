@@ -29,9 +29,45 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+//Importo e uso Vue
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+Vue.use(VueRouter);
+
+//Definisco le rotte per i componenti pagina 
+const Home = Vue.component('Home',require('./pages/Home.vue').default);
+const About = Vue.component('About',require('./pages/About.vue').default);
+const Contacts = Vue.component('Contacts',require('./pages/Contacts.vue').default);
+
+//Definisco le rotte nominate e uso i relativi componenti
+const routes = [
+    {
+        path:'/',
+        name: 'home',
+        component: 'Home'
+    },
+    {
+        path:'/',
+        name: 'about',
+        component: 'About'
+    },
+    {
+        path:'/',
+        name: 'contacts',
+        component: 'Contacts'
+    },
+]
+
+//Creo l'istanza rotta
+const router = new VueRouter({
+    mode: 'history', //   <- rimuove # dall'URL
+    routes
+})
+
 
 const app = new Vue({
     el: '#app',
+    router,  //   <- immetto l'istanza router
     data: {
         posts:null
     },
