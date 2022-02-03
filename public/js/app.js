@@ -2031,6 +2031,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -37785,35 +37791,44 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "section",
-    { staticClass: "posts d-flex flex-wrap" },
-    [
+  return _c("div", { staticClass: "container" }, [
+    _c("section", { staticClass: "posts d-flex flex-wrap" }, [
       _c("h1", [_vm._v("Posts")]),
       _vm._v(" "),
-      _vm._l(_vm.posts, function (post) {
-        return _c("div", { key: post.id, staticClass: "post" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("img", { attrs: { src: post.cover, alt: "" } }),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "card-body" },
-              [
-                _c("h3", [_vm._v(_vm._s(post.title))]),
-                _vm._v(" "),
-                _c("router-link", { attrs: { to: "/posts/" + post.id } }, [
-                  _vm._v("View Post"),
-                ]),
-              ],
-              1
-            ),
-          ]),
-        ])
-      }),
-    ],
-    2
-  )
+      _c(
+        "div",
+        { staticClass: "row" },
+        _vm._l(_vm.posts, function (post) {
+          return _c(
+            "div",
+            { key: post.id, staticClass: "col-4 card text-start mb-3" },
+            [
+              _c("img", {
+                staticClass: "card-img-top mt-3",
+                attrs: { src: post.cover, alt: "" },
+              }),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "card-body" },
+                [
+                  _c("h4", { staticClass: "card-title" }, [
+                    _vm._v(_vm._s(post.title)),
+                  ]),
+                  _vm._v(" "),
+                  _c("router-link", { attrs: { to: "/posts/" + post.id } }, [
+                    _vm._v("View Post"),
+                  ]),
+                ],
+                1
+              ),
+            ]
+          )
+        }),
+        0
+      ),
+    ]),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
