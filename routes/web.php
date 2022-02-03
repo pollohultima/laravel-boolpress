@@ -14,9 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'PageController@index')->name('home');
+Route::get('/{any}', function () {
+    return view('guest.welcome');
+})->where('any', '.*');
 
-Route::get('contacts', 'ContactController@show_contact_page')->name('contacts');
+
+// Route::get('contacts', 'ContactController@show_contact_page')->name('contacts');
 
 Route::post('contacts', 'ContactController@store')->name('contacts.send');
 
@@ -51,26 +54,5 @@ Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->
     Route::resource('contacts', ContactController::class);
 });
 
-/*
 
-Routes : sever routes (posts/learn-laravel)
-
-Model: Post
-
-
-Migrazione: posts
-
--title (Learn Laravel)
--slug (learn-laravel)
--sub_title
--body
-
-Seeder
-
-Controllers: admin/guest
-
-Table: categories
--id
--name
--slug
-*/
+Route::get('/', 'PageController@index')->name('home');

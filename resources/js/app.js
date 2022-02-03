@@ -4,9 +4,17 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+
+//Importo e uso Vue
+
+
 const { default: Axios } = require('axios');
 
 require('./bootstrap');
+
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+Vue.use(VueRouter);
 
 window.Vue = require('vue');
 
@@ -20,7 +28,6 @@ window.Vue = require('vue');
 
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
-
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 /**
@@ -29,35 +36,39 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-//Importo e uso Vue
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-Vue.use(VueRouter);
+
 
 //Definisco le rotte per i componenti pagina 
-const Home = Vue.component('Home',require('./pages/Home.vue').default);
-const About = Vue.component('About',require('./pages/About.vue').default);
-const Contacts = Vue.component('Contacts',require('./pages/Contacts.vue').default);
+const Home = Vue.component('Home', require('./pages/Home.vue').default);
+const About = Vue.component('About', require('./pages/About.vue').default);
+const Contacts = Vue.component('Contacts', require('./pages/Contacts.vue').default);
+const Games = Vue.component('Games', require('./pages/Games.vue').default);
 
 Vue.component('App', require('./App.vue').default);
+
 
 //Definisco le rotte nominate e uso i relativi componenti
 const routes = [
     {
         path:'/',
         name: 'home',
-        component: 'Home'
+        component: Home
     },
     {
-        path:'/',
+        path:'/about',
         name: 'about',
-        component: 'About'
+        component: About
     },
     {
-        path:'/',
+        path:'/contacts',
         name: 'contacts',
-        component: 'Contacts'
+        component: Contacts
     },
+      {
+        path:'/contacts',
+        name: 'contacts',
+        component: Contacts
+    }
 ]
 
 //Creo l'istanza rotta
